@@ -24,14 +24,9 @@ def find_local_peak(image, h, w):
             return find_local_peak(image, h, w-1)
     return (h, w)
 
-# Load image
 raw_image = numpy.load('hxdf_acs_wfc_f850lp_small.npy')
 # Try to remove noise
-mean = numpy.mean(raw_image)
-variance = numpy.var(raw_image)
-print("Mean: ", mean, " Variance: ", variance)
 threshold = 0.00006
-#threshold = mean + x*math.sqrt(variance) ?
 # What is an objective threshold?
 image = scipy.ndimage.gaussian_filter(raw_image, 4)
 for h in range(0, image.shape[0]):
@@ -48,6 +43,5 @@ for h in range(0, image.shape[0]):
                 peaks += [peak]
 count = len(peaks)
 print("Count: ", count)
-# Display image
 plot_image(image)
 
