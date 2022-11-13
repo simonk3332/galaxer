@@ -43,7 +43,7 @@ print("Number of galaxies in full image: ", galaxies_in_full_image)
 # The image has the angle of a grain of sand at arm's length
 # Assume a grain of sand is 1mm and an arm is 1m
 
-print("fraction_of_sky =", 4 * 3.1415 / 10**(-6))
+print("fraction_of_sky =", 4 * 3.1415 * 10**6)
 
 # Number of galaxies in the spherical sky
 galaxies_in_sky = galaxies_in_full_image * 4 * 3.1415 / 10**(-6)
