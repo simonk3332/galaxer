@@ -50,7 +50,7 @@ galaxies_in_sky = galaxies_in_full_image * 4 * 3.1415 / 10**(-6)
 
 # How much of the sky is obscured by other galaxies?
 
-print("Calculating fraction obscured...")
+print("Calculating fraction obscured")
 obscured = 0
 for h in range(0, img1.shape[0]):
     for w in range(0, img1.shape[1]):
