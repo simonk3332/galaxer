@@ -10,7 +10,7 @@ img0 = numpy.load('dat/hxdf_acs_wfc_f850lp.npy')
 # Some image information
 print("Size: ", img0.shape)
 
-
+# Fraction of image to speed up the program
 img1 = img0[4000:5000,4000:5000]
 
 img_fraction = img1.shape[0]/img0.shape[0]
@@ -23,9 +23,9 @@ print("Lowest: ", numpy.amin(img1))
 
 threshold = 0
 
-# Filter image to try to eliminate high frequency noise
+# Filter image
 # Count number of distinct local maxima 
-# What is an objective threshold to eliminate noise?
+# What is an objective threshold?
 img2 = scipy.ndimage.gaussian_filter(img1, sigma = 4)
 print("Filtering complete")
 peaks = skimage.feature.peak_local_max(img2, threshold_abs = threshold)
@@ -59,12 +59,11 @@ for h in range(0, img1.shape[0]):
 fraction_obscured = obscured / (img1.shape[0]*img1.shape[1])
 print("Fraction obscured: ", fraction_obscured)
 
-# Image is filtered in near-infrared; highly redshifted/distant/weak galaxies
-# are lost in the noise
+# Image is filtered in near-infrared; highly redshifted/distant/weak galaxies are lost
+# Galaxies obscured or melded by the Gaussian filter are lost
 galaxies_in_total = galaxies_in_sky
 
 print("Number of galaxies in total: ", galaxies_in_total)
-
 
 # Show filtered image
 matplotlib.pyplot.figure()
